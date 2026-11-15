@@ -1,18 +1,16 @@
 <?php
 
+use App\Http\Controllers\PublicSite\HomeController;
+use App\Http\Controllers\PublicSite\LeaderController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/* Public portal */
+Route::get('/', [HomeController::class, 'index'])->name('public.home');
+Route::get('/leaders', [LeaderController::class, 'index'])->name('public.leaders.index');
+Route::get('/leaders/{leader}', [LeaderController::class, 'show'])
+    ->where('leader', '[A-Za-z0-9_-]+')
+    ->name('public.leaders.show');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/* Admin portal */
+require base_path('routes/admin.php');
+require base_path('routes/network.php');
