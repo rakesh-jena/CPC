@@ -1,64 +1,331 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# CPC Leadership
 
-## About Laravel
+A research platform for exploring the leadership, career backgrounds, education, and political relationships of the Chinese Communist Party (CPC).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The application combines a public-facing research portal with an administrative dashboard for managing leader records, reviewing imported data, and maintaining relationship datasets.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Public Research Portal
 
-## Learning Laravel
+- Browse and search CPC leader profiles.
+- Filter and paginate leader listings.
+- Switch between list and grid views.
+- Display leader avatars with a default image when no avatar is available.
+- View individual leader profiles and biographies.
+- Explore career history and education/training records.
+- Explore political networks and relationship information.
+- Visualise relationships through interactive network graphs.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Administration Dashboard
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Secure administrator login.
+- Admin dashboard for managing research data.
+- Manage leader profiles and related records.
+- Manage career history and education/training entries.
+- Manage political relationships and network data.
+- Import CSV datasets.
+- Review imported data.
+- Manage administrative users and permissions.
+- Maintain data integrity and audit records.
 
-## Laravel Sponsors
+## Technology Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+| Component | Technology |
+|---|---|
+| Backend | Laravel 8 |
+| Programming Language | PHP |
+| Frontend | Blade, HTML5, CSS3, JavaScript |
+| Database | MySQL 8 |
+| Network Visualisation | Cytoscape.js |
+| Web Server | Apache |
+| Server | AWS EC2 Ubuntu |
+| Database Administration | phpMyAdmin |
 
-### Premium Partners
+## Project Structure
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```text
+cpc-leadership/
+│
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   └── Middleware/
+│   ├── Models/
+│   └── Providers/
+│
+├── bootstrap/
+├── config/
+├── database/
+│   ├── migrations/
+│   └── seeders/
+│
+├── public/
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│   └── index.php
+│
+├── resources/
+│   └── views/
+│       ├── admin/
+│       ├── public/
+│       └── layouts/
+│
+├── routes/
+│   └── web.php
+│
+├── storage/
+├── tests/
+├── .env.example
+├── artisan
+├── composer.json
+└── README.md
+```
 
-## Contributing
+## Database Structure
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+The application works with leadership and relationship datasets.
 
-## Code of Conduct
+### Main Data Entities
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+| Table | Description |
+|---|---|
+| `leaders` | Leader identity and profile information |
+| `career_history` | Political appointments and career records |
+| `education_training` | Education and training records |
+| `political_networks` | Political relationships and networks |
+| `inferred_data` | Analytical and inferred information |
 
-## Security Vulnerabilities
+Additional supporting tables are used for administration, data imports, review workflows, and relationship management.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone <YOUR_GITHUB_REPOSITORY_URL>
+
+cd cpc-leadership
+```
+
+### 2. Install Dependencies
+
+```bash
+composer install
+```
+
+### 3. Configure Environment
+
+Create the environment file:
+
+```bash
+cp .env.example .env
+```
+
+Update your `.env` configuration:
+
+```env
+APP_NAME="CPC Leadership"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=cpc_leadership
+DB_USERNAME=your_database_username
+DB_PASSWORD=your_database_password
+```
+
+Never commit actual database credentials to GitHub.
+
+### 4. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 5. Configure Database
+
+Create a MySQL database:
+
+```sql
+CREATE DATABASE cpc_leadership;
+```
+
+Import the prepared database schema and data if you are setting up an existing project database.
+
+For a new database with complete Laravel migrations:
+
+```bash
+php artisan migrate
+```
+
+**Important:** If you are importing an existing SQL database, verify the existing tables and migration history before running migrations. Always take a database backup before making schema changes.
+
+### 6. Configure Storage
+
+```bash
+php artisan storage:link
+```
+
+For Linux/Apache deployments:
+
+```bash
+sudo chown -R www-data:www-data storage bootstrap/cache
+
+sudo chmod -R 775 storage bootstrap/cache
+```
+
+### 7. Start Development Server
+
+```bash
+php artisan serve
+```
+
+Visit:
+
+```text
+http://127.0.0.1:8000
+```
+
+## Relationship Network Data
+
+The project uses CSV datasets to populate relationship information and construct political network visualisations.
+
+### Source CSV Files
+
+```text
+Relationships Table_14 November_nodes.csv
+Relationships Table_14 November.csv
+```
+
+These datasets contain node and relationship information used by the network visualisation system.
+
+Before importing, ensure that:
+
+- Both CSV files are available in the expected import locations.
+- The database contains the required relationship tables.
+- CSV column names match the importer's expected structure.
+- Existing records are backed up before bulk updates.
+
+The network visualisation uses Cytoscape.js to display relationships between political figures and other entities.
+
+## Public Website Routes
+
+| Route | Description |
+|---|---|
+| `/` | Public homepage |
+| `/leaders` | Leader directory |
+| `/leaders/{leader}` | Individual leader profile |
+| `/leaders/{leader}/network` | Leader relationship network |
+
+## Administration Routes
+
+| Route | Description |
+|---|---|
+| `/admin/login` | Administrator login |
+| `/admin` | Administration dashboard |
+
+Administrative pages require authentication and appropriate permissions.
+
+## Production Deployment
+
+The application is deployed on an AWS EC2 Ubuntu server.
+
+### Deployment Directory
+
+```bash
+/var/www/cpc-leadership
+```
+
+### Production Environment
+
+Update `.env`:
+
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=http://YOUR_DOMAIN_OR_SERVER_IP
+```
+
+### Install Production Dependencies
+
+```bash
+composer install --no-dev --optimize-autoloader
+```
+
+### Set Permissions
+
+```bash
+sudo chown -R www-data:www-data storage bootstrap/cache
+
+sudo chmod -R 775 storage bootstrap/cache
+```
+
+### Optimize Laravel
+
+```bash
+php artisan config:cache
+
+php artisan route:cache
+
+php artisan view:cache
+```
+
+### Apache Configuration
+
+Configure the Apache virtual host to point to:
+
+```text
+/var/www/cpc-leadership/public
+```
+
+Do not configure the web root to point to the Laravel project root.
+
+## Security
+
+- Never commit `.env` files.
+- Never expose database credentials.
+- Keep `APP_DEBUG=false` in production.
+- Restrict administrative access.
+- Use strong administrator passwords.
+- Store private imports outside the publicly accessible directory.
+- Maintain regular database backups.
+- Validate CSV data before importing.
+- Test database changes in a staging environment before production deployment.
+
+## Development Guidelines
+
+- Follow Laravel MVC architecture.
+- Keep database operations inside appropriate models and services.
+- Use Laravel relationships wherever possible.
+- Keep Blade templates focused on presentation.
+- Validate and sanitise imported data.
+- Maintain consistent database relationships.
+- Preserve data integrity when updating historical records.
+
+## Future Development
+
+Potential improvements include:
+
+- Advanced leader search and filtering.
+- Expanded political network analysis.
+- Timeline-based career visualisations.
+- Improved data import and validation workflows.
+- Advanced research and comparison tools.
+- Enhanced SEO and structured metadata.
+- API access for research datasets.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Add the applicable project license and usage terms before making the repository publicly available.
+
+---
+
+**CPC Leadership**
+
+A research platform for understanding Chinese Communist Party leadership, political careers, and institutional relationships.
